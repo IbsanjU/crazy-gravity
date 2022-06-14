@@ -82,7 +82,8 @@ function init() {
 		const x = randomIntFromRange(radius, canvas.width - radius)
 		const y = randomIntFromRange(0, canvas.height - radius)
 		const dx = randomIntFromRange(-2, 2)
-		var ball = new Ball(x, y, dx, 2, radius, 'red')
+		const dy = randomIntFromRange(-2, 2)
+		var ball = new Ball(x, y, dx, dy, radius, 'red')
 		ballArray.push(ball)
 	}
 }
