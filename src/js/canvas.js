@@ -27,10 +27,19 @@ addEventListener('resize', () => {
 })
 
 // Objects
-class Object {
-	constructor(x, y, radius, color) {
+class Ball {
+	/**
+	 * Ball Object
+	 * @param {Integer} x width
+	 * @param {Integer} y height
+	 * @param {Integer} dy velocity
+	 * @param {Integer} radius radius
+	 * @param {string} color color
+	 */
+	constructor(x, y, dy, radius, color) {
 		this.x = x
 		this.y = y
+		this.dy = dy
 		this.radius = radius
 		this.color = color
 	}
@@ -44,6 +53,10 @@ class Object {
 	}
 
 	update() {
+		if (this.y + this.radius > canvas.height) {
+			this.dy = -this.dy // bounce back
+		}
+		this.y += this.dy // velocity
 		this.draw()
 	}
 }
@@ -53,9 +66,11 @@ let objects
 function init() {
 	objects = []
 
-	for (let i = 0; i < 400; i++) {
-		// objects.push()
-	}
+	// for (let i = 0; i < 5; i++) {
+	var ball = new Ball(canvas.width / 2, canvas.height / 2, 2, 30, 'red')
+	console.log(ball)
+	objects.push(ball)
+	// }
 }
 
 // Animation Loop
@@ -64,9 +79,9 @@ function animate() {
 	c.clearRect(0, 0, canvas.width, canvas.height)
 
 	c.fillText('HTML CANVAS BOILERPLATE', mouse.x, mouse.y)
-	// objects.forEach(object => {
-	//  object.update()
-	// })
+	objects.forEach((object) => {
+		object.update()
+	})
 }
 
 init()
