@@ -13,6 +13,7 @@ const mouse = {
 
 const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66']
 const gravity = 1
+const friction = 0.9
 
 // Event Listeners
 addEventListener('mousemove', (event) => {
@@ -55,7 +56,7 @@ class Ball {
 
 	update() {
 		if (this.y + this.radius > canvas.height) {
-			this.dy = -this.dy // bounce back
+			this.dy = -this.dy * friction // bounce back and friction
 		} else {
 			this.dy += gravity // gravity or acceleration over time
 		}
