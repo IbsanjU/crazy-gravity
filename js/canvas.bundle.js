@@ -124,17 +124,26 @@ addEventListener('resize', function () {
   init();
 }); // Objects
 
-var _Object = /*#__PURE__*/function () {
-  function Object(x, y, radius, color) {
-    _classCallCheck(this, Object);
+var Ball = /*#__PURE__*/function () {
+  /**
+   * Ball Object
+   * @param {Integer} x width
+   * @param {Integer} y height
+   * @param {Integer} dy velocity
+   * @param {Integer} radius radius
+   * @param {string} color color
+   */
+  function Ball(x, y, dy, radius, color) {
+    _classCallCheck(this, Ball);
 
     this.x = x;
     this.y = y;
+    this.dy = dy;
     this.radius = radius;
     this.color = color;
   }
 
-  _createClass(Object, [{
+  _createClass(Ball, [{
     key: "draw",
     value: function draw() {
       c.beginPath();
@@ -146,30 +155,38 @@ var _Object = /*#__PURE__*/function () {
   }, {
     key: "update",
     value: function update() {
+      if (this.y + this.radius > canvas.height) {
+        this.dy = -this.dy; // bounce back
+      }
+
+      this.y += this.dy; // velocity
+
       this.draw();
     }
   }]);
 
-  return Object;
+  return Ball;
 }(); // Implementation
 
 
 var objects;
 
 function init() {
-  objects = [];
+  objects = []; // for (let i = 0; i < 5; i++) {
 
-  for (var i = 0; i < 400; i++) {// objects.push()
-  }
+  var ball = new Ball(canvas.width / 2, canvas.height / 2, 2, 30, 'red');
+  console.log(ball);
+  objects.push(ball); // }
 } // Animation Loop
 
 
 function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
-  c.fillText('HTML CANVAS BOILERPLATE', mouse.x, mouse.y); // objects.forEach(object => {
-  //  object.update()
-  // })
+  c.fillText('HTML CANVAS BOILERPLATE', mouse.x, mouse.y);
+  objects.forEach(function (object) {
+    object.update();
+  });
 }
 
 init();
