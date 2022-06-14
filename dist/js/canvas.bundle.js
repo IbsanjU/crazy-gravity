@@ -124,6 +124,9 @@ addEventListener('resize', function () {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
   init();
+});
+addEventListener('click', function () {
+  init();
 }); // Objects
 
 var Ball = /*#__PURE__*/function () {

@@ -28,6 +28,10 @@ addEventListener('resize', () => {
 	init()
 })
 
+addEventListener('click', () => {
+	init()
+})
+
 // Objects
 class Ball {
 	/**
