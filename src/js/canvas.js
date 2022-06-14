@@ -13,7 +13,7 @@ const mouse = {
 
 const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66']
 const gravity = 1
-const friction = 0.9
+const friction = 0.99
 
 // Event Listeners
 addEventListener('mousemove', (event) => {
@@ -70,10 +70,11 @@ class Ball {
 let ballArray = []
 function init() {
 	ballArray = []
-	for (let i = 0; i < 5; i++) {
+	for (let i = 0; i < 50; i++) {
+		const radius = randomIntFromRange(5, 30)
 		const x = randomIntFromRange(0, canvas.width)
-		const y = randomIntFromRange(0, canvas.height)
-		var ball = new Ball(x, y, 2, 30, 'red')
+		const y = randomIntFromRange(0, canvas.height - radius / 2)
+		var ball = new Ball(x, y, 2, radius, 'red')
 		ballArray.push(ball)
 	}
 }
