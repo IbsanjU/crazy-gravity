@@ -157,6 +157,8 @@ var Ball = /*#__PURE__*/function () {
     value: function update() {
       if (this.y + this.radius > canvas.height) {
         this.dy = -this.dy; // bounce back
+      } else {
+        this.dy += 1; // gravity or acceleration over time
       }
 
       this.y += this.dy; // velocity
