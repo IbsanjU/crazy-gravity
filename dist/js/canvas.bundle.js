@@ -173,14 +173,17 @@ var Ball = /*#__PURE__*/function () {
 }(); // Implementation
 
 
-var objects;
+var ballArray = [];
 
 function init() {
-  objects = []; // for (let i = 0; i < 5; i++) {
+  ballArray = [];
 
-  var ball = new Ball(canvas.width / 2, canvas.height / 2, 2, 30, 'red');
-  console.log(ball);
-  objects.push(ball); // }
+  for (var i = 0; i < 5; i++) {
+    var x = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(0, canvas.width);
+    var y = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(0, canvas.height);
+    var ball = new Ball(x, y, 2, 30, 'red');
+    ballArray.push(ball);
+  }
 } // Animation Loop
 
 
@@ -188,7 +191,7 @@ function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
   c.fillText('HTML CANVAS BOILERPLATE', mouse.x, mouse.y);
-  objects.forEach(function (object) {
+  ballArray.forEach(function (object) {
     object.update();
   });
 }

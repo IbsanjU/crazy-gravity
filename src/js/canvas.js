@@ -1,4 +1,4 @@
-import utils from './utils'
+import utils, { randomIntFromRange } from './utils'
 
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
@@ -66,15 +66,15 @@ class Ball {
 }
 
 // Implementation
-let objects
+let ballArray = []
 function init() {
-	objects = []
-
-	// for (let i = 0; i < 5; i++) {
-	var ball = new Ball(canvas.width / 2, canvas.height / 2, 2, 30, 'red')
-	console.log(ball)
-	objects.push(ball)
-	// }
+	ballArray = []
+	for (let i = 0; i < 5; i++) {
+		const x = randomIntFromRange(0, canvas.width)
+		const y = randomIntFromRange(0, canvas.height)
+		var ball = new Ball(x, y, 2, 30, 'red')
+		ballArray.push(ball)
+	}
 }
 
 // Animation Loop
@@ -83,7 +83,7 @@ function animate() {
 	c.clearRect(0, 0, canvas.width, canvas.height)
 
 	c.fillText('HTML CANVAS BOILERPLATE', mouse.x, mouse.y)
-	objects.forEach((object) => {
+	ballArray.forEach((object) => {
 		object.update()
 	})
 }
