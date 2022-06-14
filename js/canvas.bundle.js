@@ -113,7 +113,8 @@ var mouse = {
   y: innerHeight / 2
 };
 var colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'];
-var gravity = 1; // Event Listeners
+var gravity = 1;
+var friction = 0.9; // Event Listeners
 
 addEventListener('mousemove', function (event) {
   mouse.x = event.clientX;
@@ -157,7 +158,7 @@ var Ball = /*#__PURE__*/function () {
     key: "update",
     value: function update() {
       if (this.y + this.radius > canvas.height) {
-        this.dy = -this.dy; // bounce back
+        this.dy = -this.dy * friction; // bounce back and friction
       } else {
         this.dy += gravity; // gravity or acceleration over time
       }
