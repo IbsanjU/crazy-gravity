@@ -193,7 +193,8 @@ function init() {
     var y = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(0, canvas.height - radius);
     var dx = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(-2, 2);
     var dy = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(-2, 2);
-    var ball = new Ball(x, y, dx, dy, radius, 'red');
+    var color = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomColor"])(colors);
+    var ball = new Ball(x, y, dx, dy, radius, color);
     ballArray.push(ball);
   }
 } // Animation Loop

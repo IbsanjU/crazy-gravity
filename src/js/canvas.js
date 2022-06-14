@@ -1,4 +1,4 @@
-import utils, { randomIntFromRange } from './utils'
+import utils, { randomColor, randomIntFromRange } from './utils'
 
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
@@ -83,7 +83,8 @@ function init() {
 		const y = randomIntFromRange(0, canvas.height - radius)
 		const dx = randomIntFromRange(-2, 2)
 		const dy = randomIntFromRange(-2, 2)
-		var ball = new Ball(x, y, dx, dy, radius, 'red')
+		const color = randomColor(colors)
+		var ball = new Ball(x, y, dx, dy, radius, color)
 		ballArray.push(ball)
 	}
 }
