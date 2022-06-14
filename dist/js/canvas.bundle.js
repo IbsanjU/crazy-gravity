@@ -131,15 +131,17 @@ var Ball = /*#__PURE__*/function () {
    * Ball Object
    * @param {Integer} x width
    * @param {Integer} y height
-   * @param {Integer} dy velocity
+   * @param {Integer} dx x velocity
+   * @param {Integer} dy y velocity
    * @param {Integer} radius radius
    * @param {string} color color
    */
-  function Ball(x, y, dy, radius, color) {
+  function Ball(x, y, dx, dy, radius, color) {
     _classCallCheck(this, Ball);
 
     this.x = x;
     this.y = y;
+    this.dx = dx;
     this.dy = dy;
     this.radius = radius;
     this.color = color;
@@ -164,6 +166,12 @@ var Ball = /*#__PURE__*/function () {
         this.dy += gravity; // gravity or acceleration over time
       }
 
+      if (this.x + this.radius + this.dx > canvas.width || this.x - this.radius < 0) {
+        this.dx = -this.dx; // bounce back on walls
+      }
+
+      this.x += this.dx; // x velocity
+
       this.y += this.dy; // velocity
 
       this.draw();
@@ -181,9 +189,10 @@ function init() {
 
   for (var i = 0; i < 50; i++) {
     var radius = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(5, 30);
-    var x = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(0, canvas.width);
-    var y = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(0, canvas.height - radius / 2);
-    var ball = new Ball(x, y, 2, radius, 'red');
+    var x = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(radius, canvas.width - radius);
+    var y = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(0, canvas.height - radius);
+    var dx = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(-2, 2);
+    var ball = new Ball(x, y, dx, 2, radius, 'red');
     ballArray.push(ball);
   }
 } // Animation Loop

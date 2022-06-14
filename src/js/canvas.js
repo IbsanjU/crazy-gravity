@@ -34,13 +34,15 @@ class Ball {
 	 * Ball Object
 	 * @param {Integer} x width
 	 * @param {Integer} y height
-	 * @param {Integer} dy velocity
+	 * @param {Integer} dx x velocity
+	 * @param {Integer} dy y velocity
 	 * @param {Integer} radius radius
 	 * @param {string} color color
 	 */
-	constructor(x, y, dy, radius, color) {
+	constructor(x, y, dx, dy, radius, color) {
 		this.x = x
 		this.y = y
+		this.dx = dx
 		this.dy = dy
 		this.radius = radius
 		this.color = color
@@ -61,6 +63,11 @@ class Ball {
 		} else {
 			this.dy += gravity // gravity or acceleration over time
 		}
+		if (this.x + this.radius + this.dx > canvas.width || this.x - this.radius < 0) {
+			this.dx = -this.dx // bounce back on walls
+		}
+
+		this.x += this.dx // x velocity
 		this.y += this.dy // velocity
 		this.draw()
 	}
@@ -72,9 +79,10 @@ function init() {
 	ballArray = []
 	for (let i = 0; i < 50; i++) {
 		const radius = randomIntFromRange(5, 30)
-		const x = randomIntFromRange(0, canvas.width)
-		const y = randomIntFromRange(0, canvas.height - radius / 2)
-		var ball = new Ball(x, y, 2, radius, 'red')
+		const x = randomIntFromRange(radius, canvas.width - radius)
+		const y = randomIntFromRange(0, canvas.height - radius)
+		const dx = randomIntFromRange(-2, 2)
+		var ball = new Ball(x, y, dx, 2, radius, 'red')
 		ballArray.push(ball)
 	}
 }
