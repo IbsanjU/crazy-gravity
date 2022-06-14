@@ -114,7 +114,7 @@ var mouse = {
 };
 var colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'];
 var gravity = 1;
-var friction = 0.9; // Event Listeners
+var friction = 0.99; // Event Listeners
 
 addEventListener('mousemove', function (event) {
   mouse.x = event.clientX;
@@ -179,10 +179,11 @@ var ballArray = [];
 function init() {
   ballArray = [];
 
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 50; i++) {
+    var radius = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(5, 30);
     var x = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(0, canvas.width);
-    var y = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(0, canvas.height);
-    var ball = new Ball(x, y, 2, 30, 'red');
+    var y = Object(_utils__WEBPACK_IMPORTED_MODULE_0__["randomIntFromRange"])(0, canvas.height - radius / 2);
+    var ball = new Ball(x, y, 2, radius, 'red');
     ballArray.push(ball);
   }
 } // Animation Loop
