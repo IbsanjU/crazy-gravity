@@ -1,9 +1,11 @@
+#### To see a live demo [Click here!](https://ibsanju.github.io/crazy-gravity/)
+<img src="https://komarev.com/ghpvc/?username=IbsanjU&label=Profile+Views&color=brightgreen&style=plastic" alt="Bharath Kumar R" />
+
+
 
 ## Getting Started
 
-1.  Clone the repo:
-
-        git clone https://github.com/ibsanju/canvas-boilerplate.git
+1.  Clone the repo
 
 2.  Install dependencies:
 
