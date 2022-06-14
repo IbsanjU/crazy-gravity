@@ -63,7 +63,7 @@ class Ball {
 		} else {
 			this.dy += gravity // gravity or acceleration over time
 		}
-		if (this.x + this.radius + this.dx > canvas.width || this.x - this.radius < 0) {
+		if (this.x + this.radius + this.dx > canvas.width || this.x - this.radius <= 0) {
 			this.dx = -this.dx // bounce back on walls
 		}
 
