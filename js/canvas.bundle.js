@@ -112,7 +112,8 @@ var mouse = {
   x: innerWidth / 2,
   y: innerHeight / 2
 };
-var colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66']; // Event Listeners
+var colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'];
+var gravity = 1; // Event Listeners
 
 addEventListener('mousemove', function (event) {
   mouse.x = event.clientX;
@@ -158,7 +159,7 @@ var Ball = /*#__PURE__*/function () {
       if (this.y + this.radius > canvas.height) {
         this.dy = -this.dy; // bounce back
       } else {
-        this.dy += 1; // gravity or acceleration over time
+        this.dy += gravity; // gravity or acceleration over time
       }
 
       this.y += this.dy; // velocity
