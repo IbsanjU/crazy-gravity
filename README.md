@@ -1,9 +1,7 @@
 
 ## Getting Started
 
-1.  Clone the repo:
-
-        git clone https://github.com/ibsanju/canvas-boilerplate.git
+1.  Clone the repo
 
 2.  Install dependencies:
 
