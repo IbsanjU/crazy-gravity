@@ -56,7 +56,7 @@ class Ball {
 	}
 
 	update() {
-		if (this.y + this.radius > canvas.height) {
+		if (this.y + this.radius + this.dy > canvas.height) {
 			this.dy = -this.dy * friction // bounce back and friction
 		} else {
 			this.dy += gravity // gravity or acceleration over time
